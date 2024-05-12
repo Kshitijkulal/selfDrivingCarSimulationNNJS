@@ -38,10 +38,10 @@ class Car {
             );
             const outputs = NeuralNetwork.feedForward(offsets, this.head);
             if(this.useHead){
-                this.controls.forward = outputs[0];
-                this.controls.left = outputs[1];
-                this.controls.right = outputs[2];
-                this.controls.reverse = outputs[3];
+                this.controls.forward = outputs[0] > 0.5 ? 1 : 0;
+                this.controls.left = outputs[1] > 0.5 ? 1 : 0;
+                this.controls.right = outputs[2] > 0.5 ? 1 : 0;
+                this.controls.reverse = outputs[3] > 0.5 ? 1 : 0;
             }
         }
     } 

@@ -3,6 +3,10 @@ const lerp = (A, B, t) => {
 }
 // lerp = lenier enterpolation
 
+function sigmoid(x) {
+    return 1 / (1 + Math.exp(-x));
+}
+
 function getIntersection(A,B,C,D){ 
     const tTop=(D.x-C.x)*(A.y-C.y)-(D.y-C.y)*(A.x-C.x);
     const uTop=(C.y-A.y)*(A.x-B.x)-(C.x-A.x)*(A.y-B.y);

@@ -74,23 +74,18 @@ class Level {
     }
 
     static feedForward(givenInputs, level){
-        for (let i = 0; i < level.inputs.length;i++){
+        for (let i = 0; i < level.inputs.length; i++){
             level.inputs[i] = givenInputs[i];
         }
-        for(let i = 0; i < level.outputs.length;i++){
+        for (let i = 0; i < level.outputs.length; i++){
             let sum = 0;
-            for(let j = 0; j < level.inputs.length;j++){
-                sum += level.inputs[j] * level.weights[j][i]; // the second dimension in the weights array is output and the first in input hence we took [j][i] here
+            for (let j = 0; j < level.inputs.length; j++){
+                sum += level.inputs[j] * level.weights[j][i];
             }
-            if (sum > level.biases[i]){
-                level.outputs[i] = 1;
-            }
-            else{
-                level.outputs[i] = 0;
-            }
+            level.outputs[i] = sigmoid(sum + level.biases[i]);
         }
         return level.outputs;
-    }
+    }    
 }
 // We implemented the hyperplane equation above
 // In a very very simple network it could be the line Equation
